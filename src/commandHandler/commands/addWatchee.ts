@@ -14,7 +14,8 @@ export const handler = ({
   store,
 }: ArgumentsWithContext & AddWatcheeCommandType) => {
   const { dispatch } = store
-  const watchee = addWatchee({ twitchUsername })
+  const { id } = message.channel
+  const watchee = addWatchee({ discordChannelId: id, twitchUsername })
   dispatch(watchee)
-  message.reply(`Adding watchee **${twitchUsername}**`)
+  message.reply(`Adding watchee **${twitchUsername}**.`)
 }

@@ -1,18 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface Watchee {
+type twitchWatchee = string
+
+interface WatcheesSliceType {
+  [discordChannel: string]: twitchWatchee[]
+}
+
+interface AddWatcheeType {
+  discordChannelId: string
   twitchUsername: string
 }
 
-const initialState: string[] = []
+const initialState: WatcheesSliceType = {}
 
 const watcheesSlice = createSlice({
   name: 'watchees',
   initialState,
   reducers: {
-    addWatchee(state, { payload }: PayloadAction<Watchee>) {
-      const { twitchUsername } = payload
-      state.push(twitchUsername)
+    addWatchee(state, { payload }: PayloadAction<AddWatcheeType>) {
+      const { discordChannelId, twitchUsername } = payload
+      if (!(discordChannelId in state)) {
+        state[discordChannelId] = []
+      }
+      state[discordChannelId].push(twitchUsername)
     },
   },
 })
