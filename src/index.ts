@@ -41,9 +41,9 @@ setInterval(() => {
     const onlineWatchees = new Set(onlineArray)
     const allWatchees = new Set(watchees)
     const offlineWatchees = difference(allWatchees, onlineWatchees)
-    console.log('all watchees', allWatchees)
-    console.log('online watchees', onlineWatchees)
-    console.log('offline watchees', offlineWatchees)
+    // console.log('all watchees', allWatchees)
+    // console.log('online watchees', onlineWatchees)
+    // console.log('offline watchees', offlineWatchees)
 
     offlineWatchees.forEach((twitchUsername: string) =>
       dispatch(removeStreamData({ twitchUsername }))
