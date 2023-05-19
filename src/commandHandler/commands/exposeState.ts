@@ -9,7 +9,7 @@ export const handler = async ({ message, store }: ArgumentsWithContext) => {
   const { id } = message.channel
 
   if (!(id in watcheesSlice)) {
-    message.reply('Not watching anyone on this channel :pensive:')
+    message.reply('not watching anyone on this channel :pensive:')
     return
   }
 
@@ -20,7 +20,7 @@ export const handler = async ({ message, store }: ArgumentsWithContext) => {
   watchees = watchees.slice(0, -1) + '.'
 
   message.reply(
-    `Number of watchees: ${watcheesSlice[id].length}` +
+    `number of watchees: ${watcheesSlice[id].length}` +
       (watcheesSlice[id].length > 0 ? `\nWatchees: ${watchees}` : '')
   )
 }
