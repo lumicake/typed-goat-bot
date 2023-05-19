@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import watcheesReducer from './watchees'
+import watcheesSlice from './watchees'
 
 const rootReducer = combineReducers({
-  watcheesReducer,
+  watcheesSlice,
 })
 export type RootState = ReturnType<typeof rootReducer>
 

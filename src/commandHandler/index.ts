@@ -6,8 +6,7 @@ import store from '../redux'
 
 export interface ArgumentsWithContext extends Arguments {
   message: Message
-  dispatch: typeof store.dispatch
-  getState: typeof store.getState
+  store: typeof store
 }
 
 const parser = yargs
@@ -21,25 +20,19 @@ const parser = yargs
 export const handleCommand = (command: string, message: Message) => {
   parser.parse(
     command,
-    { message, ...store },
+    { message, store },
     (error: Error | undefined, args: yargs.Arguments, output: string) => {
-      console.log(error)
-      console.log(args)
-      console.log(output)
-      if (error) {
-        console.error(error)
-      }
       if (output) {
         let massagedOutput = output
-          .replace('index.js ', '')
-          .replace('argument', 'command')
+          .replace(/index.js /g, '')
+          .replace(/argument/g, 'command')
         if (args._[0] === 'help') {
           massagedOutput = massagedOutput.substring(
             0,
             massagedOutput.lastIndexOf('\n')
           )
         }
-        message.reply(massagedOutput)
+        message.reply('```' + massagedOutput + '```')
       }
     }
   )
