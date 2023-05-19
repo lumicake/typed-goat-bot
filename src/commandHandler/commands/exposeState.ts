@@ -25,7 +25,7 @@ export const handler = async ({ message, store }: ArgumentsWithContext) => {
         Object.keys(watcheesSlice).length
       }**\n` +
       `this channel in watchee channels: **${id in watcheesSlice}**\n` +
-      `entries in streams slice: **${Object.keys(streamsSlice).length}**` +
+      `entries in streams slice: **${Object.keys(streamsSlice).length}**\n` +
       `number of watchees this channel: **${watcheesThisChannel.length}**\n` +
       (watcheesThisChannel.length > 0
         ? `\nwatchees this channel: ${watchees}`
