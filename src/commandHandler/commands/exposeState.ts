@@ -6,13 +6,21 @@ export const builder = {}
 export const handler = async ({ message, store }: ArgumentsWithContext) => {
   const { getState } = store
   const { watcheesSlice } = getState()
-  let watchees = watcheesSlice.reduce((acc, item) => {
+  const { id } = message.channel
+
+  if (!(id in watcheesSlice)) {
+    message.reply('Not watching anyone on this channel :pensive:')
+    return
+  }
+
+  let watchees = watcheesSlice[id].reduce((acc, item) => {
     acc = `${acc} ${item},`
     return acc
   }, '')
   watchees = watchees.slice(0, -1) + '.'
+
   message.reply(
-    `Number of watchees: ${watcheesSlice.length}` +
-      (watcheesSlice.length > 0 ? `\nWatchees: ${watchees}` : '')
+    `Number of watchees: ${watcheesSlice[id].length}` +
+      (watcheesSlice[id].length > 0 ? `\nWatchees: ${watchees}` : '')
   )
 }
