@@ -17,5 +17,5 @@ export const handler = ({
   const { id } = message.channel
   const watchee = addWatchee({ discordChannelId: id, twitchUsername })
   dispatch(watchee)
-  message.reply(`Adding watchee **${twitchUsername}**.`)
+  message.reply(`adding watchee **${twitchUsername}**.`)
 }
