@@ -6,7 +6,7 @@ interface AddWatcheeCommandType {
 }
 
 export const command = 'add-watchee <twitchUsername>'
-export const describe = 'Command to add-watchees'
+export const describe = 'add a single watchee'
 export const builder = {}
 export const handler = ({
   twitchUsername,

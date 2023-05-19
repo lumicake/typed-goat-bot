@@ -11,6 +11,7 @@ interface AddWatcheeType {
   twitchUsername: string
 }
 
+//const initialState: WatcheesSliceType = { 493002349590347787: ['lumigia'] }
 const initialState: WatcheesSliceType = {}
 
 const watcheesSlice = createSlice({
